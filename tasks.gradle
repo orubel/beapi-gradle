@@ -1,0 +1,90 @@
+task reverseEngineerCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "reverse-engineer"
+}
+
+task bootstrapIostateCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "bootstrap-iostate"
+}
+
+task bootstrapDomainstateCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "bootstrap-domainstate"
+}
+
+task bootstrapBizstateCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "bootstrap-bizstate"
+}
+
+task generateIostateCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "generate-iostate"
+}
+
+task generateDomainstateCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "generate-domainstate"
+}
+
+task generateControllerCommand(type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "generate-controller"
+}
+
+task wrapper(type: Wrapper) {
+    gradleVersion = gradleWrapperVersion
+}
+
+
+tasks.withType(JavaExec) {
+    systemProperties System.properties
+}
+
+task finalize {
+    doLast {
+
+    }
+}
+
+build.finalizedBy(finalize)
+
+bootRun {
+    systemProperties = System.properties
+}
+
+test {
+    systemProperties = System.properties
+}
+
+bootstrapDomainstateCommand {
+    systemProperties = System.properties
+}
+
+bootstrapBizstateCommand {
+    systemProperties = System.properties
+}
+
+bootstrapIostateCommand {
+    systemProperties = System.properties
+}
+
+generateDomainstateCommand {
+    systemProperties = System.properties
+}
+
+generateIostateCommand {
+    systemProperties = System.properties
+}
+
+generateControllerCommand {
+    systemProperties = System.properties
+}
+
+reverseEngineerCommand {
+    systemProperties = System.properties
+    systemProperty "pkg", System.getProperty("pkg")
+}
+
+
