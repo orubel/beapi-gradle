@@ -1,10 +1,9 @@
+def deps = {
     // R2DBC - WOULD HAVE TO WRAP ALL CACHING AND REWRITE EVERYTHING; BETTER TO FORK TO SPRINGBOOT2
     //compile 'io.r2dbc:r2dbc-spi:1.0.0.BUILD-SNAPSHOT'
     //compile 'io.r2dbc:r2dbc-h2:1.0.0.BUILD-SNAPSHOT'
 
-
     compile group: 'org.apache.commons', name: 'commons-lang3', version: '3.0'
-
 
     /**
      * API Block
@@ -101,4 +100,8 @@
      * Scheduling
      */
     compile 'org.grails.plugins:quartz:2.0.13'
-    
+
+
+}
+project.dependencies(deps)
+dependencies(deps)

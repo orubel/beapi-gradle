@@ -1,0 +1,15 @@
+def projRepos = {
+        flatDir {
+            dirs 'lib'
+        }
+        mavenLocal()
+        mavenCentral()
+        maven { url "https://repo.grails.org/grails/core" }
+        maven { url "${System.getProperty('user.home')}/.m2/repository" }
+        maven { url "https://dl.bintray.com/orubel/plugins" }
+        jcenter {
+            url "https://jcenter.bintray.com/"
+        }
+}
+project.buildscript.repositories(projRepos)
+repositories(projRepos)

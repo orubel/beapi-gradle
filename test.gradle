@@ -1,0 +1,105 @@
+//import org.grails.gradle.plugin.commands.ApplicationContextCommandTask
+
+project.tasks.create(reverseEngineerCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "reverse-engineer"
+    //into(buildDir)
+}
+
+
+
+project.tasks.create(bootstrapIostateCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "bootstrap-iostate"
+}
+
+project.tasks.create(bootstrapDomainstateCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "bootstrap-domainstate"
+}
+
+project.tasks.create(bootstrapBizstateCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "bootstrap-bizstate"
+}
+
+project.tasks.create(generateIostateCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "generate-iostate"
+}
+
+project.tasks.create(generateDomainstateCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "generate-domainstate"
+}
+
+project.tasks.create(generateControllerCommand,type: ApplicationContextCommandTask) {
+    classpath =  project.sourceSets.main.runtimeClasspath + project.configurations.console
+    command = "generate-controller"
+}
+
+project.tasks.create(wrapper,type: Wrapper) {
+    gradleVersion = gradleWrapperVersion
+}
+
+tasks.withType(ApplicationContextCommandTask){
+    doLast {
+
+    }
+}
+
+tasks.withType(JavaExec) {
+    systemProperties System.properties
+}
+
+task finalize {
+    doLast {
+
+    }
+}
+
+build.finalizedBy(finalize)
+
+bootRun {
+    systemProperties = System.properties
+}
+
+test {
+    systemProperties = System.properties
+}
+
+bootstrapDomainstateCommand {
+    systemProperties = System.properties
+}
+
+bootstrapBizstateCommand {
+    systemProperties = System.properties
+}
+
+bootstrapIostateCommand {
+    systemProperties = System.properties
+}
+
+generateDomainstateCommand {
+    systemProperties = System.properties
+}
+
+generateIostateCommand {
+    systemProperties = System.properties
+}
+
+generateControllerCommand {
+    systemProperties = System.properties
+}
+
+reverseEngineerCommand {
+    systemProperties = System.properties
+    systemProperty "pkg", System.getProperty("pkg")
+}
+
+
+
+
+
+
+
